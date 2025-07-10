@@ -14,6 +14,9 @@ importers:
       '@radix-ui/react-toast':
         specifier: 1.2.4
         version: 1.2.4(@types/react-dom@19.0.0)(@types/react@19.0.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@zootools/waitlist-js':
+        specifier: ^0.2.1
+        version: 0.2.1
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -441,6 +444,9 @@ packages:
 
   '@types/react@19.0.0':
     resolution: {integrity: sha512-MY3oPudxvMYyesqs/kW1Bh8y9VqSmf+tzqw3ae8a9DZW68pUe3zAdHeI1jc6iAysuRdACnVknHP8AhwD4/dxtg==}
+
+  '@zootools/waitlist-js@0.2.1':
+    resolution: {integrity: sha512-R38D30K9riIPedAGqgHkG1jdWtxHcj4Lcn3vR69kmpEgbzIkAvgWeo7GUWJJh0lOTk/Gg0RFPVNXDeVntfWZEg==}
 
   ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
@@ -1288,6 +1294,8 @@ snapshots:
   '@types/react@19.0.0':
     dependencies:
       csstype: 3.1.3
+
+  '@zootools/waitlist-js@0.2.1': {}
 
   ansi-regex@5.0.1: {}
 

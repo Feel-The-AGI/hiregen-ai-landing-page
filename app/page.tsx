@@ -20,6 +20,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
+import waitlist from '@zootools/waitlist-js'
 
 const socialProofLogos = [
   { name: "Goldman Sachs", src: "/landing%20page%20porfolio%20logos/goldman-sachs.svg" },
@@ -90,7 +91,7 @@ const comparisonData = [
   },
   {
     feature: "Talent depth",
-    hiregen: "Millions",
+    hiregen: "800M+",
     jobBoards: "Limited",
     recruiters: "Network only",
     hiregenGood: true,
@@ -159,6 +160,12 @@ export default function LandingPage() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
   }
 
+  // Waitlist popup handler
+  const clickPopup = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    waitlist.openPopup("ssEMzvqG6iBaTfRn7cF2");
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Sticky Navigation */}
@@ -197,11 +204,13 @@ export default function LandingPage() {
             </button>
           </div>
 
-          <Link href="/login">
-            <Button className="w-[132px] h-[44px] bg-blue-600 hover:bg-blue-700 text-white rounded-xl focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]">
-              See Talent
-            </Button>
-          </Link>
+          {/* Navigation CTA Button */}
+          <Button
+            className="w-[132px] h-[44px] bg-blue-600 hover:bg-blue-700 text-white rounded-xl focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]"
+            onClick={clickPopup}
+          >
+            See Talent
+          </Button>
         </div>
       </nav>
 
@@ -251,11 +260,13 @@ export default function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
           >
-            <Link href="/login">
-              <Button className="bg-white/15 backdrop-blur-lg border border-white/30 text-blue-600 hover:bg-white/25 hover:scale-105 transition-all duration-400 shadow-xl rounded-xl px-8 py-3 focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]">
-                Find Matches
-              </Button>
-            </Link>
+            {/* Hero Section Buttons */}
+            <Button
+              className="bg-white/15 backdrop-blur-lg border border-white/30 text-blue-600 hover:bg-white/25 hover:scale-105 transition-all duration-400 shadow-xl rounded-xl px-8 py-3 focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]"
+              onClick={clickPopup}
+            >
+              Find Matches
+            </Button>
             <Button
               variant="ghost"
               onClick={() => scrollToSection("features")}
@@ -463,7 +474,7 @@ export default function LandingPage() {
 
       {/* Pricing */}
       <section id="pricing" className="py-20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -471,40 +482,63 @@ export default function LandingPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Simple, transparent pricing</h2>
-            <p className="text-xl text-gray-600 mb-12">One plan that scales with your hiring needs</p>
+            <p className="text-xl text-gray-600 mb-12">Choose the plan that fits your hiring needs</p>
 
-            <Card className="w-[400px] mx-auto bg-white/15 backdrop-blur-lg border border-white/30 rounded-2xl shadow-2xl">
-              <CardContent className="p-8 text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">Growth Plan</h3>
-                <div className="text-4xl font-bold text-blue-600 mb-1">$299</div>
-                <div className="text-gray-600 mb-6">per month</div>
-                <div className="text-lg font-medium text-gray-900 mb-6">Unlimited searches</div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
+              {/* Startup Plan */}
+              <Card className="w-full max-w-[400px] mx-auto bg-white/15 backdrop-blur-lg border border-white/30 rounded-2xl shadow-2xl">
+                <CardContent className="p-8 text-center">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Startup</h3>
+                  <div className="text-4xl font-bold text-blue-600 mb-1">$299</div>
+                  <div className="text-gray-600 mb-6">per month</div>
+                  <div className="text-lg font-medium text-gray-900 mb-6">20 AI-powered searches/mo</div>
+                  <div className="space-y-3 mb-8 text-left">
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Basic candidate profiles</span></div>
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Email support</span></div>
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Search history</span></div>
+                  </div>
+                  <div className="text-xs text-blue-600 font-semibold mb-4">Most popular for SMEs & Growth Startups</div>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-3 focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]" onClick={clickPopup}>Start with Startup</Button>
+                </CardContent>
+              </Card>
 
-                <div className="space-y-3 mb-8 text-left">
-                  {[
-                    "AI-powered candidate sourcing",
-                    "Automated outreach campaigns",
-                    "Built-in coding assessments",
-                    "Real-time candidate scoring",
-                    "Interview scheduling tools",
-                    "ATS integrations",
-                  ].map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <Check className="w-5 h-5 text-green-600" />
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
-                </div>
+              {/* Scale Plan */}
+              <Card className="w-full max-w-[400px] mx-auto bg-white/15 backdrop-blur-lg border border-white/30 rounded-2xl shadow-2xl">
+                <CardContent className="p-8 text-center">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Scale</h3>
+                  <div className="text-4xl font-bold text-blue-600 mb-1">$399</div>
+                  <div className="text-gray-600 mb-6">per month</div>
+                  <div className="text-lg font-medium text-gray-900 mb-6">50 AI-powered searches/mo</div>
+                  <div className="space-y-3 mb-8 text-left">
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Full candidate profiles with AI insights</span></div>
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Priority support</span></div>
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Team collaboration</span></div>
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Advanced filters</span></div>
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Export capabilities</span></div>
+                  </div>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-3 focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]" onClick={clickPopup}>Start with Scale</Button>
+                </CardContent>
+              </Card>
 
-                <Link href="/login">
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-3 focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]">
-                    Start Hiring
-                  </Button>
-                </Link>
-
-                <p className="text-sm text-gray-500 mt-4">Only pay when you're sourcing.</p>
-              </CardContent>
-            </Card>
+              {/* Enterprise Plan */}
+              <Card className="w-full max-w-[400px] mx-auto bg-white/15 backdrop-blur-lg border border-white/30 rounded-2xl shadow-2xl">
+                <CardContent className="p-8 text-center">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
+                  <div className="text-4xl font-bold text-blue-600 mb-1">$2000</div>
+                  <div className="text-gray-600 mb-6">per month</div>
+                  <div className="text-lg font-medium text-gray-900 mb-6">Unlimited AI-powered searches</div>
+                  <div className="space-y-3 mb-8 text-left">
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Custom AI training</span></div>
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Dedicated account manager</span></div>
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">API access</span></div>
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Custom integrations</span></div>
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Advanced analytics</span></div>
+                    <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">White-label options</span></div>
+                  </div>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-3 focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]" onClick={clickPopup}>Contact Sales</Button>
+                </CardContent>
+              </Card>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -571,7 +605,10 @@ export default function LandingPage() {
           >
             <h3 className="text-3xl font-bold text-gray-900 mb-6">Ready to see your next engineer?</h3>
             <Link href="/login">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-8 py-3 text-lg focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]">
+              <Button
+                className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl px-8 py-3 text-lg focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]"
+                onClick={clickPopup}
+              >
                 See Talent
               </Button>
             </Link>
