@@ -120,7 +120,7 @@ const comparisonData = [
 
 const faqs = [
   {
-    question: "How does HireGen find candidates?",
+    question: "How does HireGen-AI find candidates?",
     answer:
       "Our AI searches across millions of developer profiles from GitHub, LinkedIn, Stack Overflow, and other platforms to find candidates that match your specific requirements.",
   },
@@ -173,7 +173,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
           <div className="w-[120px]">
             <Link href="/" className="text-2xl font-bold text-blue-600">
-              HireGen
+              HireGen-AI
             </Link>
           </div>
 
@@ -194,7 +194,7 @@ export default function LandingPage() {
               onClick={() => scrollToSection("why")}
               className="text-gray-700 hover:text-blue-600 transition-colors focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]"
             >
-              Why HireGen
+              Why HireGen-AI
             </button>
             <button
               onClick={() => scrollToSection("faq")}
@@ -392,7 +392,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <Image src="/mockups/mockup-1.png" alt="HireGen platform mockup 1" width={800} height={600} layout="responsive" />
+                <Image src="/mockups/mockup-1.png" alt="HireGen-AI platform mockup 1" width={800} height={600} layout="responsive" />
               </motion.div>
               <motion.div
                 className="h-auto bg-white rounded-2xl shadow-lg overflow-hidden"
@@ -401,7 +401,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                <Image src="/mockups/mockup-2.png" alt="HireGen platform mockup 2" width={800} height={600} layout="responsive" />
+                <Image src="/mockups/mockup-2.png" alt="HireGen-AI platform mockup 2" width={800} height={600} layout="responsive" />
               </motion.div>
               <motion.div
                 className="h-auto bg-white rounded-2xl shadow-lg overflow-hidden"
@@ -410,7 +410,7 @@ export default function LandingPage() {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 viewport={{ once: true }}
               >
-                <Image src="/mockups/mockup-3.png" alt="HireGen platform mockup 3" width={800} height={600} layout="responsive" />
+                <Image src="/mockups/mockup-3.png" alt="HireGen-AI platform mockup 3" width={800} height={600} layout="responsive" />
               </motion.div>
             </div>
           </div>
@@ -428,7 +428,7 @@ export default function LandingPage() {
           viewport={{ once: true, amount: 0.3 }}
         >
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why choose HireGen?</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why choose HireGen-AI?</h2>
             <p className="text-xl text-gray-600">See how we compare to traditional hiring methods</p>
           </div>
 
@@ -437,7 +437,7 @@ export default function LandingPage() {
               <thead className="bg-blue-50">
                 <tr>
                   <th className="px-6 py-4 text-left font-semibold text-gray-900">Feature</th>
-                  <th className="px-6 py-4 text-center font-semibold text-blue-600 bg-blue-100/50">HireGen</th>
+                  <th className="px-6 py-4 text-center font-semibold text-blue-600 bg-blue-100/50">HireGen-AI</th>
                   <th className="px-6 py-4 text-center font-semibold text-gray-900">Job Boards</th>
                   <th className="px-6 py-4 text-center font-semibold text-gray-900">Recruiters</th>
                 </tr>
@@ -554,7 +554,7 @@ export default function LandingPage() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Frequently asked questions</h2>
-            <p className="text-xl text-gray-600">Everything you need to know about HireGen</p>
+            <p className="text-xl text-gray-600">Everything you need to know about HireGen-AI</p>
           </motion.div>
 
           <div className="space-y-4 mb-16">
@@ -618,7 +618,7 @@ export default function LandingPage() {
 
       {/* Footer */}
       <footer className="h-[100px] bg-white border-t border-gray-200 flex items-center justify-center">
-        <p className="text-gray-500">© 2025 HireGen. All rights reserved.</p>
+        <p className="text-gray-500">© 2025 HireGen-AI. All rights reserved.</p>
       </footer>
     </div>
   )
