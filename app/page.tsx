@@ -173,7 +173,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
           <div className="w-[120px]">
             <Link href="/" className="text-2xl font-bold text-blue-600">
-              HireGen-AI
+              HireGen.AI
             </Link>
           </div>
 
@@ -497,7 +497,6 @@ export default function LandingPage() {
                     <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Email support</span></div>
                     <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Search history</span></div>
                   </div>
-                  <div className="text-xs text-blue-600 font-semibold mb-4">Most popular for SMEs & Growth Startups</div>
                   <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-3 focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]" onClick={clickPopup}>Start with Startup</Button>
                 </CardContent>
               </Card>
@@ -516,6 +515,7 @@ export default function LandingPage() {
                     <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Advanced filters</span></div>
                     <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Export capabilities</span></div>
                   </div>
+                  <div className="text-xs text-blue-600 font-semibold mb-4">Most popular for SMEs & Growth Startups</div>
                   <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl py-3 focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]" onClick={clickPopup}>Start with Scale</Button>
                 </CardContent>
               </Card>
