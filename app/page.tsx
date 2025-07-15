@@ -21,6 +21,7 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import waitlist from '@zootools/waitlist-js'
+import { useRef } from "react"
 
 const socialProofLogos = [
   { name: "Goldman Sachs", src: "/landing%20page%20porfolio%20logos/goldman-sachs.svg" },
@@ -151,10 +152,35 @@ const faqs = [
 
 export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [isDemoOpen, setIsDemoOpen] = useState(false)
+  const modalRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     console.log("LANDING READY")
   }, [])
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsDemoOpen(false)
+    }
+    if (isDemoOpen) {
+      document.body.style.overflow = "hidden"
+      window.addEventListener("keydown", handleKeyDown)
+    } else {
+      document.body.style.overflow = ""
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+    return () => {
+      document.body.style.overflow = ""
+      window.removeEventListener("keydown", handleKeyDown)
+    }
+  }, [isDemoOpen])
+
+  const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (modalRef.current && e.target === modalRef.current) {
+      setIsDemoOpen(false)
+    }
+  }
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
@@ -269,7 +295,7 @@ export default function LandingPage() {
             </Button>
             <Button
               variant="ghost"
-              onClick={() => scrollToSection("features")}
+              onClick={() => setIsDemoOpen(true)}
               className="border border-blue-600 text-blue-600 hover:bg-blue-50 rounded-xl px-8 py-3 focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]"
             >
               See Demo
@@ -615,6 +641,45 @@ export default function LandingPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Modal for Demo Video */}
+      <AnimatePresence>
+        {isDemoOpen && (
+          <motion.div
+            ref={modalRef}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={handleModalClick}
+          >
+            <motion.div
+              className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 p-0 overflow-hidden"
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <button
+                className="absolute top-3 right-3 z-10 bg-white/80 hover:bg-white rounded-full p-2 shadow focus:outline-2 focus:outline-offset-2 focus:outline-[#2563EB]"
+                onClick={() => setIsDemoOpen(false)}
+                aria-label="Close demo video"
+              >
+                <X className="w-6 h-6 text-gray-700" />
+              </button>
+              <div className="w-full aspect-video bg-black">
+                <video
+                  src="/demo_vid/HireGen-AI_ProductShowcase_July2025.mov"
+                  controls
+                  autoPlay
+                  className="w-full h-full object-contain rounded-b-2xl"
+                  poster="/mockups/mockup-1.png"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Footer */}
       <footer className="h-[100px] bg-white border-t border-gray-200 flex items-center justify-center">
