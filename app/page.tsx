@@ -550,8 +550,8 @@ export default function LandingPage() {
               <Card className="w-full max-w-[400px] mx-auto bg-white/15 backdrop-blur-lg border border-white/30 rounded-2xl shadow-2xl">
                 <CardContent className="p-8 text-center">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h3>
-                  <div className="text-4xl font-bold text-blue-600 mb-1">$2000</div>
-                  <div className="text-gray-600 mb-6">per month</div>
+                  <div className="text-4xl font-bold text-blue-600 mb-1">Custom</div>
+                  <div className="text-gray-600 mb-6">Contact Sales</div>
                   <div className="text-lg font-medium text-gray-900 mb-6">Unlimited AI-powered searches</div>
                   <div className="space-y-3 mb-8 text-left">
                     <div className="flex items-center space-x-3"><Check className="w-5 h-5 text-green-600" /><span className="text-gray-700">Custom AI training</span></div>
