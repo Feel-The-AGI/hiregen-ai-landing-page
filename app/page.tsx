@@ -674,6 +674,9 @@ export default function LandingPage() {
                   autoPlay
                   className="w-full h-full object-contain rounded-b-2xl"
                   poster="/mockups/mockup-1.png"
+                  // uncomment the below 2 lines to ensable download of demo video
+                  controlsList="nodownload"
+                  onContextMenu={e => e.preventDefault()}
                 />
               </div>
             </motion.div>
